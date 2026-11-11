@@ -1,0 +1,71 @@
+PRUEBAS DE LÓGICA DE NEGOCIO (JAVA SE 21, compilado para Java 11) — APTC101 S6
+Ejecución: java -cp build/classes cl.biblioteca.prueba.PruebaLogica
+Compilación (javac -Xlint:all): sin errores ni advertencias
+
+PRUEBAS DE LÓGICA DE NEGOCIO — APTC101 S6
+------------------------------------------
+# Validaciones
+OK:    RUN válido con puntos y guion
+OK:    RUN válido sin puntos
+OK:    RUN con dígito verificador incorrecto
+OK:    RUN con formato inválido
+OK:    Género M
+OK:    Género f (minúscula)
+OK:    Género distinto de M/F
+OK:    ISBN de 10 caracteres
+OK:    ISBN-10 terminado en X
+OK:    ISBN de 13 dígitos con guiones
+OK:    ISBN de 11 caracteres
+OK:    ISBN de 12 caracteres
+OK:    ISBN de 9 caracteres
+OK:    ISBN-13 con letra
+# Usuarios
+OK:    RUN duplicado
+OK:    Estudiante sin carrera
+OK:    Docente sin profesión
+OK:    Eliminar usuario inexistente
+# Libros
+OK:    ISBN de libro duplicado
+OK:    Cantidad total cero
+OK:    Disponible cero
+OK:    Disponible mayor que el total
+OK:    Eliminar libro inexistente
+# Préstamo
+OK:    Plazo de estudiante de 11 días
+OK:    Plazo de docente de 21 días
+OK:    Plazo de 0 días
+OK:    Libro inexistente
+OK:    Usuario inexistente
+OK:    Préstamo de estudiante por 10 días
+OK:    Préstamo de docente por 20 días (polimorfismo)
+OK:      vencimiento = inicio + 10 días
+OK:      disponibles baja de 2 a 1
+OK:      usuario queda con el ISBN en 'préstamo'
+OK:    Vencimiento y stock tras el préstamo
+OK:    Segundo préstamo del mismo usuario
+OK:    Libro sin ejemplares disponibles
+OK:    Eliminar usuario con préstamo activo
+OK:    Eliminar libro prestado
+# Devolución
+OK:    Devolver con ISBN distinto al prestado
+OK:    Devolver sin préstamo activo
+OK:      multa
+OK:      usuario habilitado
+OK:      disponibles vuelve a 2
+OK:    Devolución a tiempo: sin multa, habilita y repone stock
+OK:      multa
+OK:    Devolución con 3 días de atraso: multa $3.000
+OK:    Usuario puede pedir otro libro tras devolver
+# Persistencia en archivos de texto
+OK:      usuarios
+OK:      libros
+OK:      préstamos
+OK:      disponibles del libro
+OK:    Reinicio del servicio recupera usuarios, libros y préstamos
+OK:      usuarios
+OK:      libros
+OK:    Las eliminaciones persisten
+------------------------------------------
+Resultado: 55 correctas, 0 con falla.
+
+NOTA: las pruebas cubren la capa de negocio; la interfaz Swing se comprueba ejecutando el proyecto en NetBeans.

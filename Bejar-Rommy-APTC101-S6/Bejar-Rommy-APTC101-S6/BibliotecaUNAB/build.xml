@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="BibliotecaUNAB" default="jar" basedir=".">
+  <property name="src.dir" value="src"/>
+  <property name="build.dir" value="build/classes"/>
+  <property name="dist.dir" value="dist"/>
+  <target name="init"><mkdir dir="${build.dir}"/><mkdir dir="${dist.dir}"/></target>
+  <target name="compile" depends="init"><javac srcdir="${src.dir}" destdir="${build.dir}" encoding="UTF-8" source="11" target="11" includeantruntime="false"/></target>
+  <target name="jar" depends="compile"><jar destfile="${dist.dir}/BibliotecaUNAB.jar" basedir="${build.dir}"><manifest><attribute name="Main-Class" value="cl.biblioteca.Main"/></manifest></jar></target>
+  <target name="run" depends="jar"><java jar="${dist.dir}/BibliotecaUNAB.jar" fork="true" failonerror="true"/></target>
+  <target name="clean"><delete dir="build"/><delete dir="dist"/></target>
+</project>

@@ -1,0 +1,48 @@
+SALIDA DEL PROGRAMA DE DEMOSTRACIÓN (cl.biblioteca.Demo)
+
+1. Usuarios (herencia: Estudiante y Docente extienden Usuario)
+  [OK]       Crear estudiante
+  [OK]       Crear docente
+  [RECHAZADO] RUN duplicado -> RUN ya registrado.
+  [RECHAZADO] Dígito verificador incorrecto -> Dígito verificador del RUN incorrecto.
+  [RECHAZADO] Género distinto de M/F -> El género debe ser M o F.
+  Estudiante Ana Pérez [11111111-1] | máximo 10 días
+  Docente Luis Soto [12345678-5] | máximo 20 días
+2. Libros
+  [OK]       Crear libro (2 ejemplares)
+  [OK]       Crear segundo libro (1 ejemplar)
+  [RECHAZADO] ISBN duplicado -> ISBN ya registrado.
+  [RECHAZADO] ISBN de 11 caracteres -> ISBN inválido: use 10 caracteres (el último puede ser X) o 13 dígitos.
+  [RECHAZADO] Cantidad disponible mayor a la total -> Cantidad total > 0 y disponibilidad entre 1 y total.
+3. Préstamos (polimorfismo: maximoDiasPrestamo() según el tipo de usuario)
+  [RECHAZADO] Estudiante pide 11 días -> Plazo: 1 a 10 días para Estudiante.
+  [OK]       Estudiante pide 10 días -> Prestamo[RUN=11111111-1, ISBN=9780306406157, inicio=2026-11-11, vence=2026-11-21, dias=10]
+  [RECHAZADO] Estudiante pide un segundo libro -> Usuario no habilitado: ya tiene préstamo.
+  [OK]       Docente pide 20 días -> Prestamo[RUN=12345678-5, ISBN=9780306406157, inicio=2026-11-11, vence=2026-12-01, dias=20]
+  [RECHAZADO] Libro sin ejemplares disponibles -> No hay ejemplares disponibles.
+BIBLIOTECA UNAB — SEDE ANTONIO VARAS
+TARJETA DE PRÉSTAMO
+----------------------------------------
+Usuario: Ana Pérez
+RUN: 11111111-1
+Tipo: Estudiante
+Libro: Programación en Java
+ISBN: 9780306406157
+Inicio: 2026-11-11
+Plazo: 10 días
+Devolver antes o el: 2026-11-21
+Multa por atraso: $1.000 por día
+
+4. Devoluciones
+  [RECHAZADO] Devolver con ISBN que no corresponde -> El ISBN no coincide con el préstamo activo del usuario.
+  [OK]       Devolver 3 días tarde (multa en $) -> 3000
+  [OK]       Devolver a tiempo (multa en $) -> 0
+5. Eliminaciones
+  [OK]       Eliminar usuario
+  [RECHAZADO] Eliminar usuario inexistente -> Usuario inexistente.
+  [OK]       Eliminar libro
+  [RECHAZADO] Eliminar libro inexistente -> Libro inexistente.
+6. Contenido de los archivos de texto
+  usuarios.txt: [D	Luis Soto	12345678-5	M		0	Informática	Magíster]
+  libros.txt: [0306406152	Estructuras de Datos	B. Autor	1	1	]
+  prestamos.txt: []
